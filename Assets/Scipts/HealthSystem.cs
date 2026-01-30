@@ -29,19 +29,26 @@ public class HealthSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_currentHealth<=_minHealth)
+        if (_currentHealth>=_maxHealth)
         {
+            _currentHealth = _maxHealth;
+        }
+
+        if (_currentHealth <= _minHealth)
+        {
+            _currentHealth = _minHealth;
             Debug.Log("Karakter öldü sahne yenilendi");
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        //can denme 
+/*        if (Input.GetKeyDown(KeyCode.E))
         {
             HealthIncrease(10);
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         { 
             HealthDecrease(10); 
-        }
+        }*/
             UIEffect();
 
     }
