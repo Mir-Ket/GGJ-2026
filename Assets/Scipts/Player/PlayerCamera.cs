@@ -2,6 +2,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
+
 public class PlayerCamera : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -12,6 +13,8 @@ public class PlayerCamera : MonoBehaviour
 
     float xRotation;
     float yRotation;
+    private float currentTilt;
+    private float firstFovValue;
 
 
 
@@ -19,6 +22,7 @@ public class PlayerCamera : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        firstFovValue = getFovValue();
     }
 
     // Update is called once per frame
@@ -35,14 +39,14 @@ public class PlayerCamera : MonoBehaviour
         xRotation -= mouseY;
 
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, currentTilt);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
 
     }
 
     public void DoFov(float endValue)
     {
-        GetComponent<Camera>().DOFieldOfView(endValue, 0.25f);
+        GetComponent<Camera>().fieldOfView = endValue;
     }
 
     public float getFovValue()
@@ -50,9 +54,16 @@ public class PlayerCamera : MonoBehaviour
         return this.GetComponent<Camera>().fieldOfView;
     }
 
+    public float getFirstFovValue()
+    {
+        return firstFovValue;
+    }
+
     public void DoTilt(float zTilt)
     {
-        transform.DOLocalRotate(new Vector3(0, 0, zTilt), 0.25f);
+        //transform.DOLocalRotate(new Vector3(0, 0, zTilt), 0.25f);
+
+        DOTween.To(() => currentTilt, x => currentTilt = x, zTilt, 0.25f);
     }
 
 

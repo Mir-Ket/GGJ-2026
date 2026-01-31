@@ -204,8 +204,8 @@ public class WallRunning : MonoBehaviour
         rb.useGravity = true;
 
         if (cam == null) return;
-        cam.DoFov(cam.getFovValue());
-        cam.DoTilt(0f);
+        cam.DoFov(cam.getFirstFovValue());
+        cam.DoTilt(0f); 
 
     }
 
