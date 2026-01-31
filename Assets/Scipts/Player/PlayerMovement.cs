@@ -46,6 +46,11 @@ public class PlayerMovement : MonoBehaviour
     public float crouchYScale;
     private float startYScale;
 
+    [Header("Camera Effects")]
+    public PlayerCamera cam;
+    public float grappleFov = 95f;
+    private float startFov;
+
 
 
     [Header("Inputs")]
@@ -61,12 +66,15 @@ public class PlayerMovement : MonoBehaviour
     public bool testSlope;
     public enum MovementStates
     {
-        WALK, SPRINT, AIR, CROUCH, SLIDE, WALLRUN
+        WALK, SPRINT, AIR, CROUCH, SLIDE, WALLRUN, FREEZE
     }
 
     public MovementStates state;
     public bool sliding;
     public bool wallRunning;
+    public bool freeze;
+    public bool activeGrapple;
+    private bool enableMovementOnNextTouch;
 
 
     void Start()
@@ -76,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
         canJump = true;
 
         startYScale = transform.localScale.y;
+        startFov = cam.getFovValue();
 
     }
 
@@ -96,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
         HandleState();
 
         //Handle Drag
-        if (isGrounded)
+        if (isGrounded && !activeGrapple)
         {
             rb.linearDamping = groundLinearDamp;
 
@@ -115,58 +124,68 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleState()
     {
-        //Crouching Mode
-
-        if(crouchInput.action.IsPressed())
+        //Mode - Freeze
+        if (freeze)
         {
-            state = MovementStates.CROUCH;
-            desiredMoveSpeed = crouchSpeed;
+            state = MovementStates.FREEZE;
+            moveSpeed = 0;
+            rb.linearVelocity = Vector3.zero;
         }
-
-        //Sprinting Mode
-        if(isGrounded && sprintInput.action.IsPressed())
-        {
-            state = MovementStates.SPRINT;
-            desiredMoveSpeed = sprintSpeed;
-            
-        }
-        //Walking Mode
-        else if(isGrounded)
-        {
-            state = MovementStates.WALK;
-            desiredMoveSpeed = walkSpeed;
-        }
-        //Air Mode
-        else
-        {
-            state = MovementStates.AIR;
-            
-
-        }
-
-        if(sliding)
-        {
-            state = MovementStates.SLIDE;
-
-            if(OnSlope() && rb.linearVelocity.y < 0.1f)
-            {
-                desiredMoveSpeed = slideSpeed;
-            }
-            else 
-            {
-                desiredMoveSpeed = sprintSpeed;
-            }
-        }
-
-        if(wallRunning)
+        else if (wallRunning)
         {
             state = MovementStates.WALLRUN;
             desiredMoveSpeed = wallRunSpeed;
         }
+        //Crouching Mode
+        else if (crouchInput.action.IsPressed())
+        {
+            state = MovementStates.CROUCH;
+            desiredMoveSpeed = crouchSpeed;
+        }
+        else if (sliding)
+        {
+            state = MovementStates.SLIDE;
 
+            if (OnSlope() && rb.linearVelocity.y < 0.1f)
+            {
+                desiredMoveSpeed = slideSpeed;
+            }
+            else
+            {
+                desiredMoveSpeed = sprintSpeed;
+            }
+        }
+        //Sprinting Mode
+        else if (isGrounded && sprintInput.action.IsPressed())
+        {
+            state = MovementStates.SPRINT;
+            desiredMoveSpeed = sprintSpeed;
+
+        }
+        //Walking Mode
+        else if (isGrounded)
+        {
+            state = MovementStates.WALK;
+            desiredMoveSpeed = walkSpeed;
+        }
+
+        //Air Mode
+        else
+        {
+            state = MovementStates.AIR;
+
+
+        }
+
+        
+
+        
+
+        
+        
 
         //Check if desiredMoveSpeed has changed drastically
-        if(Mathf.Abs(desiredMoveSpeed - lastDesiredMoveSpeed) > 4f && moveSpeed != 0)
+        if (Mathf.Abs(desiredMoveSpeed - lastDesiredMoveSpeed) > 4f && moveSpeed != 0)
         {
             StopAllCoroutines();
             StartCoroutine(SmoothlyLerpMoveSpeed());
@@ -274,6 +293,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void ControlSpeed()
     {
+        if(activeGrapple)
+        {
+            return;
+        }
+
         //Limit speed on slope
         if(OnSlope() && !exitingSlope)
         {
@@ -317,6 +341,42 @@ public class PlayerMovement : MonoBehaviour
         canJump = true;
     }
 
+    private Vector3 velocityToSet;
+    public void JumpToPosition(Vector3 targetPosition, float trajectoryHeight )
+    {
+        activeGrapple = true;
+        velocityToSet = CalculateJumpVelocity(transform.position, targetPosition, trajectoryHeight);
+
+        Invoke(nameof(SetVelocity),0.1f);
+        Invoke(nameof(ResetRestrictions), 3f);
+        
+    }
+
+
+    private void SetVelocity()
+    {
+        enableMovementOnNextTouch = true;
+        rb.linearVelocity = velocityToSet;
+
+        cam.DoFov(grappleFov);
+    }
+
+    public void ResetRestrictions()
+    {
+        activeGrapple = false;
+        cam.DoFov(85f);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(enableMovementOnNextTouch)
+        {
+            enableMovementOnNextTouch = false;
+            ResetRestrictions();
+            GetComponent<Grappling>().StopGrapple();
+        }
+    }
+
     public bool OnSlope()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
@@ -331,6 +391,19 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 GetSlopeMoveDirection(Vector3 direction)
     {
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
+    }
+
+    public Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
+    {
+        float gravity = Physics.gravity.y;
+        float displacementY = endPoint.y - startPoint.y;
+        Vector3 displacementXZ = new Vector3(endPoint.x - startPoint.x, 0f, endPoint.z - startPoint.z);
+
+        Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * trajectoryHeight);
+        Vector3 velocityXZ = displacementXZ / (Mathf.Sqrt(-2 * trajectoryHeight / gravity)
+            + Mathf.Sqrt(2 * (displacementY - trajectoryHeight) / gravity));
+
+        return velocityXZ + velocityY;
     }
 
 }
