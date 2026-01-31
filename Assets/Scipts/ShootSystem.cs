@@ -14,11 +14,9 @@ public class ShootSystem : MonoBehaviour
     [SerializeField] float _MinAmmo;
     [SerializeField] float _maxAmmo;
     [SerializeField] bool _shooting;
-    
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
         _currentAmmo = _maxAmmo;
         _camera = Camera.main;
