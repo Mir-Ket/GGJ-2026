@@ -1758,8 +1758,6 @@ MonoBehaviour:
   wallRunSpeed: 8.5
   speedIncreaseMultiplier: 1.5
   slopeIncreaseMultiplier: 2.5
-  desiredMoveSpeed: 0
-  lastDesiredMoveSpeed: 0
   groundLinearDamp: 4
   limitSpeed: 1
   jumpForce: 8
@@ -1854,13 +1852,20 @@ MonoBehaviour:
   wallRunForce: 200
   wallClimbForce: 200
   wallClimbSpeed: 3
+  wallJumpUpForce: 12
+  wallJumpSideForce: 10
   maxWallRunTime: 1.5
   movement: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   upwardRunInput: {fileID: -2333456811496217999, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   downwardRunInput: {fileID: -1672670525505542152, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  jump: {fileID: -2099379676528639254, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   wallCheckDistance: 0.7
   minJumpHeight: 2
+  exitWallTime: 0
+  useGravity: 1
+  gravityCounterForce: 27
   orientation: {fileID: 1639348582}
+  cam: {fileID: 59071448}
 --- !u!114 &1349502882
 MonoBehaviour:
   m_ObjectHideFlags: 0

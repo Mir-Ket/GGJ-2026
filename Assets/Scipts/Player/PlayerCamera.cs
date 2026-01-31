@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using DG.Tweening;
 public class PlayerCamera : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -42,11 +42,18 @@ public class PlayerCamera : MonoBehaviour
 
     public void DoFov(float endValue)
     {
-        GetComponent<Camera>().fieldOfView = endValue;
+        GetComponent<Camera>().DOFieldOfView(endValue, 0.25f);
     }
 
     public float getFovValue()
     {
         return this.GetComponent<Camera>().fieldOfView;
     }
+
+    public void DoTilt(float zTilt)
+    {
+        transform.DOLocalRotate(new Vector3(0, 0, zTilt), 0.25f);
+    }
+
+
 }

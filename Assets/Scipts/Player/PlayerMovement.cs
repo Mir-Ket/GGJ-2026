@@ -17,8 +17,8 @@ public class PlayerMovement : MonoBehaviour
     public float wallRunSpeed;
     public float speedIncreaseMultiplier;
     public float slopeIncreaseMultiplier;
-    public float desiredMoveSpeed;
-    public float lastDesiredMoveSpeed;
+    private float desiredMoveSpeed;
+    private float lastDesiredMoveSpeed;
 
     public float groundLinearDamp;
     public bool limitSpeed = true;
