@@ -1,8 +1,11 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //ZAMANA BAGLI IVMELENME MEKANIGI EKLENMEDI. ONU YARIN EKLE VE KONTROL ET.
+
     Rigidbody rb;
     public Transform orientation;
 
@@ -10,11 +13,17 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     public float walkSpeed;
     public float sprintSpeed;
-
-
+    public float slideSpeed;
+    public float wallRunSpeed;
+    public float speedIncreaseMultiplier;
+    public float slopeIncreaseMultiplier;
+    public float desiredMoveSpeed;
+    public float lastDesiredMoveSpeed;
 
     public float groundLinearDamp;
     public bool limitSpeed = true;
+
+    
 
     [Header("Jumping")]
     public float jumpForce;
@@ -52,10 +61,12 @@ public class PlayerMovement : MonoBehaviour
     public bool testSlope;
     public enum MovementStates
     {
-        WALK, SPRINT, AIR, CROUCH
+        WALK, SPRINT, AIR, CROUCH, SLIDE, WALLRUN
     }
 
     public MovementStates state;
+    public bool sliding;
+    public bool wallRunning;
 
 
     void Start()
@@ -109,21 +120,21 @@ public class PlayerMovement : MonoBehaviour
         if(crouchInput.action.IsPressed())
         {
             state = MovementStates.CROUCH;
-            moveSpeed = crouchSpeed;
+            desiredMoveSpeed = crouchSpeed;
         }
 
         //Sprinting Mode
         if(isGrounded && sprintInput.action.IsPressed())
         {
             state = MovementStates.SPRINT;
-            moveSpeed = sprintSpeed;
+            desiredMoveSpeed = sprintSpeed;
             
         }
         //Walking Mode
         else if(isGrounded)
         {
             state = MovementStates.WALK;
-            moveSpeed = walkSpeed;
+            desiredMoveSpeed = walkSpeed;
         }
         //Air Mode
         else
@@ -132,6 +143,68 @@ public class PlayerMovement : MonoBehaviour
             
 
         }
+
+        if(sliding)
+        {
+            state = MovementStates.SLIDE;
+
+            if(OnSlope() && rb.linearVelocity.y < 0.1f)
+            {
+                desiredMoveSpeed = slideSpeed;
+            }
+            else 
+            {
+                desiredMoveSpeed = sprintSpeed;
+            }
+        }
+
+        if(wallRunning)
+        {
+            state = MovementStates.WALLRUN;
+            desiredMoveSpeed = wallRunSpeed;
+        }
+
+
+        //Check if desiredMoveSpeed has changed drastically
+        if(Mathf.Abs(desiredMoveSpeed - lastDesiredMoveSpeed) > 4f && moveSpeed != 0)
+        {
+            StopAllCoroutines();
+            StartCoroutine(SmoothlyLerpMoveSpeed());
+        }
+        else
+        {
+            moveSpeed = desiredMoveSpeed;
+        }
+
+            lastDesiredMoveSpeed = desiredMoveSpeed;
+    }
+
+    private IEnumerator SmoothlyLerpMoveSpeed()
+    {
+        //Smoothly lerp movementSpeed to desired value
+        float time = 0;
+        float difference = Mathf.Abs(desiredMoveSpeed - moveSpeed);
+        float startValue = moveSpeed;
+
+        while(time < difference)
+        {
+            moveSpeed = Mathf.Lerp(startValue, desiredMoveSpeed, time / difference);
+
+            if(OnSlope())
+            {
+                float slopeAngle = Vector3.Angle(Vector3.up, slopeHit.normal);
+                float slopeAngleIncrease = 1 + (slopeAngle / 90f);
+
+                time += Time.deltaTime * speedIncreaseMultiplier * slopeIncreaseMultiplier * slopeAngleIncrease;
+            }
+            else
+            {
+                time += Time.deltaTime * speedIncreaseMultiplier;
+            }
+            yield return null;
+        }
+
+        moveSpeed = desiredMoveSpeed;
     }
 
     private void GetInput()
