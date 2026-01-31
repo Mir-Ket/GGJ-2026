@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     public float walkSpeed;
     public float sprintSpeed;
+
+
+
     public float groundLinearDamp;
     public bool limitSpeed = true;
 
@@ -116,7 +119,6 @@ public class PlayerMovement : MonoBehaviour
             moveSpeed = sprintSpeed;
             
         }
-
         //Walking Mode
         else if(isGrounded)
         {
@@ -170,10 +172,11 @@ public class PlayerMovement : MonoBehaviour
         //on Slope
         if(OnSlope() && !exitingSlope)
         {
-            rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 20f);
+            rb.AddForce(GetSlopeMoveDirection(moveDirection) * moveSpeed * 20f,ForceMode.Force);
 
             if(rb.linearVelocity.y > 0)
             {
+                //It was 80f before
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
             }
         }
@@ -184,9 +187,9 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
         }
-        //in air
         else if(!isGrounded)
         {
+            //in air
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
 
         }
@@ -241,7 +244,7 @@ public class PlayerMovement : MonoBehaviour
         canJump = true;
     }
 
-    private bool OnSlope()
+    public bool OnSlope()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
         {
@@ -252,9 +255,9 @@ public class PlayerMovement : MonoBehaviour
         return false;
     }
 
-    private Vector3 GetSlopeMoveDirection()
+    public Vector3 GetSlopeMoveDirection(Vector3 direction)
     {
-        return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
+        return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
     }
 
 }
