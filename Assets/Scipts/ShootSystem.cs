@@ -38,10 +38,10 @@ public class ShootSystem : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-
+            ShootControl();
             if (Physics.Raycast(_camRaycast, out hit, _raycastDistance, _layerMask))
             {
-                ShootControl();
+                
                 if (hit.collider.TryGetComponent(out HealthSystem healthSystem))
                 {
                     if (_shooting==true)
