@@ -52,7 +52,6 @@ public class PlayerMovement : MonoBehaviour
     private float startFov;
 
 
-
     [Header("Inputs")]
     public InputActionReference moveInput;
     public InputActionReference jumpInput;
@@ -62,6 +61,10 @@ public class PlayerMovement : MonoBehaviour
     float vertialInput;
     Vector2 inputVector;
     Vector3 moveDirection;
+
+    [Header("References")]
+
+   
 
     public bool testSlope;
     public enum MovementStates
@@ -85,6 +88,8 @@ public class PlayerMovement : MonoBehaviour
 
         startYScale = transform.localScale.y;
         startFov = cam.getFovValue();
+
+        
 
     }
 
@@ -160,6 +165,8 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementStates.SPRINT;
             desiredMoveSpeed = sprintSpeed;
+            
+
 
         }
         //Walking Mode
@@ -167,6 +174,7 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementStates.WALK;
             desiredMoveSpeed = walkSpeed;
+            
         }
 
         //Air Mode
@@ -177,12 +185,6 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        
-
-        
-
-        
-        
 
         //Check if desiredMoveSpeed has changed drastically
         if (Mathf.Abs(desiredMoveSpeed - lastDesiredMoveSpeed) > 4f && moveSpeed != 0)

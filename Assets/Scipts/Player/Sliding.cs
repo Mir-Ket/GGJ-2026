@@ -8,6 +8,7 @@ public class Sliding : MonoBehaviour
     public Transform playerObj;
     private Rigidbody rb;
     private PlayerMovement pm;
+    
 
     [Header("Sliding Parameters")]
     public float maxSlideTime;
@@ -40,6 +41,8 @@ public class Sliding : MonoBehaviour
         if(slideInput.action.WasPerformedThisFrame() && (moveInput.action.ReadValue<Vector2>().x != 0 || moveInput.action.ReadValue<Vector2>().y != 0))
         {
             StartSlide();
+            SoundManager.PlaySound(SoundType.PLAYER_SLIDE);
+
         }
         if(slideInput.action.WasReleasedThisFrame())
         {
@@ -57,8 +60,8 @@ public class Sliding : MonoBehaviour
 
     private void StartSlide()
     {
+        
         isSliding = true;
-
         playerObj.localScale = new Vector3(playerObj.localScale.x, slideYScale, playerObj.localScale.z);
         rb.AddForce(Vector3.down * 10f, ForceMode.Impulse);
         slideTimer = maxSlideTime;
