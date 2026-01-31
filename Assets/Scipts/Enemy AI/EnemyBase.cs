@@ -15,7 +15,7 @@ public class EnemyBase : MonoBehaviour
 
     [Header("AI Attack")]
     [SerializeField] float _attackDelay;
-    [SerializeField] bool _attacked;
+    public bool _attacked;
 
     [Header("AI States")]
     [SerializeField] float _sightRange, _attackRange;
@@ -85,7 +85,7 @@ public class EnemyBase : MonoBehaviour
     {
         _agent.SetDestination(_playerTransform.position);
     }
-    private void AttackPlayer()
+    public void AttackPlayer()
     {
        // _agent.SetDestination(transform.position);
 

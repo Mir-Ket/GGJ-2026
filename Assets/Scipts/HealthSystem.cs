@@ -14,12 +14,15 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] TextMeshProUGUI _healtText;
 
     [Header("Health Amount")]
-    [SerializeField] float _currentHealth = 100;
+    [SerializeField] float _currentHealth;
     [SerializeField] float _maxHealth;
     [SerializeField] float _minHealth;
 
 
-
+    private void Awake()
+    {
+        _currentHealth = _maxHealth;
+    }
     // Update is called once per frame
     void Update()
     {
