@@ -11444,14 +11444,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Menu & Audios
       objectReference: {fileID: 0}
-    - target: {fileID: 1974350341212909155, guid: a4ce6d9428bc7ba419f9e48d9ff84893, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -408
-      objectReference: {fileID: 0}
-    - target: {fileID: 1974350341212909155, guid: a4ce6d9428bc7ba419f9e48d9ff84893, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -187
-      objectReference: {fileID: 0}
     - target: {fileID: 4723249157758107580, guid: a4ce6d9428bc7ba419f9e48d9ff84893, type: 3}
       propertyPath: m_LocalPosition.x
       value: 483.18808
@@ -11490,62 +11482,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4723249157758107580, guid: a4ce6d9428bc7ba419f9e48d9ff84893, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5054917807312318886, guid: a4ce6d9428bc7ba419f9e48d9ff84893, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5054917807312318886, guid: a4ce6d9428bc7ba419f9e48d9ff84893, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6014552060111488516, guid: a4ce6d9428bc7ba419f9e48d9ff84893, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7503310245277583473, guid: a4ce6d9428bc7ba419f9e48d9ff84893, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7503310245277583473, guid: a4ce6d9428bc7ba419f9e48d9ff84893, type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 7503310245277583473, guid: a4ce6d9428bc7ba419f9e48d9ff84893, type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 1080
-      objectReference: {fileID: 0}
-    - target: {fileID: 8471971983708944146, guid: a4ce6d9428bc7ba419f9e48d9ff84893, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8471971983708944146, guid: a4ce6d9428bc7ba419f9e48d9ff84893, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8471971983708944146, guid: a4ce6d9428bc7ba419f9e48d9ff84893, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8497591504009399811, guid: a4ce6d9428bc7ba419f9e48d9ff84893, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8497591504009399811, guid: a4ce6d9428bc7ba419f9e48d9ff84893, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8497591504009399811, guid: a4ce6d9428bc7ba419f9e48d9ff84893, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8606758007327305186, guid: a4ce6d9428bc7ba419f9e48d9ff84893, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8606758007327305186, guid: a4ce6d9428bc7ba419f9e48d9ff84893, type: 3}
-      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -50011,6 +49947,22 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 281632031}
+    - target: {fileID: 478780400006091188, guid: 4b02d4ecd3b3635469d41b86ed4c3262, type: 3}
+      propertyPath: moveSpeed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 478780400006091188, guid: 4b02d4ecd3b3635469d41b86ed4c3262, type: 3}
+      propertyPath: walkSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 478780400006091188, guid: 4b02d4ecd3b3635469d41b86ed4c3262, type: 3}
+      propertyPath: slideSpeed
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 478780400006091188, guid: 4b02d4ecd3b3635469d41b86ed4c3262, type: 3}
+      propertyPath: sprintSpeed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3126741594426793190, guid: 4b02d4ecd3b3635469d41b86ed4c3262, type: 3}
       propertyPath: lr
       value: 

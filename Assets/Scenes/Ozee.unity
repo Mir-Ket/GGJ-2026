@@ -6678,6 +6678,7 @@ MonoBehaviour:
   maxtime: 31
   winState: 0
   loseState: 0
+  debugMode: 0
 --- !u!4 &1430769738
 Transform:
   m_ObjectHideFlags: 0

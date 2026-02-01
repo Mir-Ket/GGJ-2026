@@ -44,5 +44,10 @@ public class InGameMenu : MonoBehaviour
         Cursor.visible = false;
     }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
     
 }

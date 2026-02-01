@@ -445,7 +445,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8957487674784518311}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2993609479643326450}
+        m_TargetAssemblyTypeName: InGameMenu, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &598688862709740397
 GameObject:
   m_ObjectHideFlags: 0
@@ -3978,7 +3990,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &834316610687413886
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5452,6 +5464,14 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3148653088654601458, guid: 56b1c4458d070ea469e3ed78d972289d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -408
+      objectReference: {fileID: 0}
+    - target: {fileID: 3148653088654601458, guid: 56b1c4458d070ea469e3ed78d972289d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -187
+      objectReference: {fileID: 0}
     - target: {fileID: 4309186544272018929, guid: 56b1c4458d070ea469e3ed78d972289d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 68.576996
@@ -5504,6 +5524,18 @@ PrefabInstance:
       propertyPath: 'musicList.Array.data[0]'
       value: 
       objectReference: {fileID: 8300000, guid: 0a4f17a3b721c504480e8b7385430a79, type: 3}
+    - target: {fileID: 6410050020112517856, guid: 56b1c4458d070ea469e3ed78d972289d, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410050020112517856, guid: 56b1c4458d070ea469e3ed78d972289d, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410050020112517856, guid: 56b1c4458d070ea469e3ed78d972289d, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 7603667663880021048, guid: 56b1c4458d070ea469e3ed78d972289d, type: 3}
       propertyPath: m_Color.b
       value: 0.9150943

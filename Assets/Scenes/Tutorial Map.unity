@@ -2217,7 +2217,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 60d5f8b846253614a81bbcd609865b1c, type: 3}
+  m_Texture: {fileID: 2800000, guid: f731489a3d0572b4e832b25ac2c3fbff, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -7286,7 +7286,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 60d5f8b846253614a81bbcd609865b1c, type: 3}
+  m_Texture: {fileID: 2800000, guid: f731489a3d0572b4e832b25ac2c3fbff, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -29599,7 +29599,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 7378391854619861732}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99afcf5901534f449a48ba088a453bed, type: 3}
   m_Name: 
@@ -40335,7 +40335,7 @@ PrefabInstance:
       objectReference: {fileID: 1568115581}
     - target: {fileID: 3126741594426793190, guid: 4b02d4ecd3b3635469d41b86ed4c3262, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3323167119163005183, guid: 4b02d4ecd3b3635469d41b86ed4c3262, type: 3}
       propertyPath: m_IsActive
