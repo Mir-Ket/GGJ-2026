@@ -4,102 +4,79 @@ using System.Collections.Generic;
 
 public class MaskSystem : MonoBehaviour
 {
-    [Header("Tüm Seçenekler (5 Adet)")]
-    public GameObject[] allMasks;
-    public GameObject[] allWeapons;
+    [Header("Maske Ayarlarý")]
+    public GameObject[] _mask3DObjects; 
+    public GameObject[] _maskUIs;       
 
-    [Header("UI Referanslarý")]
-    public GameObject selectionUI;
-    public Button[] selectionButtons; // Sahnedeki 3 adet buton
+    private int lastActiveIndex = -1;
 
-    private int activeIndex = -1;
-    private float timer = 0f;
-    private bool isGamePaused = true;
-
-    // O an ekrandaki 3 butonun hangi maske indekslerine denk geldiðini tutar
-    private int[] currentDisplayedIndices = new int[3];
+    private Grappling _grapplingScript;
+    private PlayerMovement _playerMovement;
 
     void Start()
     {
         DeactivateAll();
-        ShowSelectionMenu();
+        _grapplingScript = Object.FindAnyObjectByType<Grappling>();
+        _grapplingScript.enabled = false;
+
     }
 
-    void Update()
+    public void ActivateRandomMask()
     {
-        if (!isGamePaused)
+        if (lastActiveIndex != -1)
         {
-            timer += Time.deltaTime;
-            if (timer >= 30f)
-            {
-                ShowSelectionMenu();
-            }
+            _mask3DObjects[lastActiveIndex].SetActive(false);
+            _maskUIs[lastActiveIndex].SetActive(false);
         }
-    }
 
-    public void ShowSelectionMenu()
-    {
-        isGamePaused = true;
-        Time.timeScale = 0f;
-        selectionUI.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        int randomIndex = Random.Range(0, _mask3DObjects.Length);
 
-        SetupRandomButtons();
-    }
+        while(randomIndex == lastActiveIndex) { randomIndex = Random.Range(0, 5); }
 
-    void SetupRandomButtons()
-    {
-        // 0'dan 4'e kadar olan indeksleri bir listeye ekle
-        List<int> possibleIndices = new List<int>();
-        for (int i = 0; i < allMasks.Length; i++) possibleIndices.Add(i);
+        _mask3DObjects[randomIndex].SetActive(true);
+        _maskUIs[randomIndex].SetActive(true);
 
-        // Listeyi karýþtýr ve ilk 3 tanesini al
-        for (int i = 0; i < 3; i++)
+        lastActiveIndex = randomIndex;
+
+
+        GameObject checkMaskName = _mask3DObjects[randomIndex];
+        string maskName = checkMaskName.name;
+
+        switch (maskName)
         {
-            int randomIndex = Random.Range(0, possibleIndices.Count);
-            int selectedMaskIndex = possibleIndices[randomIndex];
+            case "Grapple Gun":
+                Debug.Log("GrableGun");
+                _grapplingScript.enabled = true;
 
-            currentDisplayedIndices[i] = selectedMaskIndex;
-            possibleIndices.RemoveAt(randomIndex); // Ayný maske iki kez çýkmasýn
+                break;
+            case "Desert Eagle":
+                Debug.Log("Desert Eagle");
+                _grapplingScript.enabled = false;
+                break;
+            case "Katana":
+                Debug.Log("Katana");
+                _grapplingScript.enabled = false;
 
-            // Butonun üzerindeki metni güncelle (Eðer butonun içinde Text varsa)
-            selectionButtons[i].GetComponentInChildren<Text>().text = "Maske " + (selectedMaskIndex + 1);
+                break;
+            case "Mic":
+                Debug.Log("Mic");
+                _grapplingScript.enabled = false;
+
+                break;
+            case "Speed":
+                Debug.Log("Speed");
+                _grapplingScript.enabled = false;
+                _playerMovement.limitSpeed = false;
+                Debug.Log("Hýzladý");
+                break;
+                
         }
+        Debug.Log("Yeni maske aktif edildi: " + randomIndex);
     }
 
-    // Butonlara Unity Inspector'dan bunu tanýmla: 
-    // Button 0 -> SelectFromButton(0), Button 1 -> SelectFromButton(1)...
-    public void SelectFromButton(int buttonIndex)
+    private void DeactivateAll()
     {
-        int actualMaskIndex = currentDisplayedIndices[buttonIndex];
-        ApplySelection(actualMaskIndex);
-    }
-
-    void ApplySelection(int index)
-    {
-        DeactivateAll();
-
-        activeIndex = index;
-        allMasks[activeIndex].SetActive(true);
-        allWeapons[activeIndex].SetActive(true);
-
-        ResumeGame();
-    }
-
-    void ResumeGame()
-    {
-        isGamePaused = false;
-        Time.timeScale = 1f;
-        selectionUI.SetActive(false);
-        timer = 0f;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
-
-    void DeactivateAll()
-    {
-        foreach (GameObject m in allMasks) m.SetActive(false);
-        foreach (GameObject w in allWeapons) w.SetActive(false);
+        foreach (var obj in _mask3DObjects) obj.SetActive(false);
+        foreach (var ui in _maskUIs) ui.SetActive(false);
     }
 }
