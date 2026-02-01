@@ -21,12 +21,15 @@ public enum SoundType
 
 }
 
+
 [RequireComponent(typeof(AudioSource))]
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] private AudioClip[] soundList;
     private static SoundManager instance;
     private AudioSource audioSource;
+    private int musicIndex;
+
     [SerializeField] private AudioSource playerAudio;
 
     private void Awake()
@@ -46,7 +49,11 @@ public class SoundManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //main audio
         audioSource = GetComponent<AudioSource>();
+
+        
+        
     }
 
     // Update is called once per frame
@@ -59,6 +66,8 @@ public class SoundManager : MonoBehaviour
     {
         instance.audioSource.PlayOneShot(instance.soundList[(int)sound], volume);
     }
+
+    
 
   
 }
