@@ -143,8 +143,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   soundList:
-  - {fileID: 8300000, guid: 42e01045d13bafd4785f76491287f6e0, type: 3}
-  - {fileID: 8300000, guid: 42e01045d13bafd4785f76491287f6e0, type: 3}
-  - {fileID: 8300000, guid: 42e01045d13bafd4785f76491287f6e0, type: 3}
+  - {fileID: 8300000, guid: 7e6c05b08dc61ce4faf573fd9eda2e15, type: 3}
+  - {fileID: 8300000, guid: ac95f00e73f7b1d429d8c1f0643465d8, type: 3}
   - {fileID: 8300000, guid: feb8392bc1910894ba76d9c68b6ede37, type: 3}
+  - {fileID: 8300000, guid: 43d538ceada81cb46b7d4af968b3a24f, type: 3}
+  - {fileID: 8300000, guid: ccf79767629bafc4684ca41e410053c2, type: 3}
+  - {fileID: 8300000, guid: c6c0a5dabda0dc9409acf58fe676a0c9, type: 3}
+  - {fileID: 8300000, guid: ebef5fae1658e664c94f3f2bfe16d4de, type: 3}
+  - {fileID: 8300000, guid: c34f34380ad780b478756af0598b607e, type: 3}
+  - {fileID: 8300000, guid: 9fdda9d9c0284ae4fa1702d2b234045d, type: 3}
+  - {fileID: 8300000, guid: c34f34380ad780b478756af0598b607e, type: 3}
+  - {fileID: 8300000, guid: d6238dd7d098f3546876b8c6134a5529, type: 3}
   playerAudio: {fileID: 0}

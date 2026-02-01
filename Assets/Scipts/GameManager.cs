@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool winState = false; //oyuncu kapiya ulastiginda calisacak
     [SerializeField] private bool loseState = false; // oyuncu oldugunde/ verilen surede tamamlayamadiginda calisacak.
 
+    [Header("DEBUG")]
+    [SerializeField] private bool debugMode = false;
+
+
     #endregion
 
 
@@ -26,7 +30,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        CalculateTime();
+        if(!debugMode)
+        {
+            CalculateTime();
+
+        }
     }
 
     public void ChangeLevel(int levelIndex)

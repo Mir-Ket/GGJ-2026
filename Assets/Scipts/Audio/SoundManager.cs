@@ -4,17 +4,15 @@ public enum SoundType
 {
     PLAYER_HEAL,
     PLAYER_HURT,
-    PLAYER_DEAD,
     PLAYER_SLIDE,
 
     HOOK_LAUNCH,
-    HOOK_PULL,
-    KATANA,
+    HOOK_HIT,
+    KATANA_AIR,
+    KATANA_HIT,
     PISTOL,
-    MICROPHONE,
 
     BOMBALAK1,
-    BOMBALAK2,
     ENEMY2_ATTACK,
     ENEMY2_DEAD,
 

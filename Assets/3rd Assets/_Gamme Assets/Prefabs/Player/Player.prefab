@@ -437,7 +437,7 @@ MonoBehaviour:
   wallRunForce: 200
   wallClimbForce: 200
   wallClimbSpeed: 3
-  wallJumpUpForce: 8
+  wallJumpUpForce: 3
   wallJumpSideForce: 65
   maxWallRunTime: 1.5
   movement: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
@@ -448,7 +448,7 @@ MonoBehaviour:
   minJumpHeight: 2
   exitWallTime: 0
   useGravity: 1
-  gravityCounterForce: 27
+  gravityCounterForce: 24
   orientation: {fileID: 2103291833990040480}
   cam: {fileID: 0}
 --- !u!114 &3126741594426793190
@@ -463,12 +463,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99afcf5901534f449a48ba088a453bed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Grappling
+  pm: {fileID: 0}
   cam: {fileID: 0}
   gunTip: {fileID: 0}
   whatIsGrappleable:
     serializedVersion: 2
     m_Bits: 7168
   lr: {fileID: 0}
+  hook: {fileID: 0}
   maxGrappleDistance: 25
   grappleDelayTime: 0.25
   overshootYAxis: 2
