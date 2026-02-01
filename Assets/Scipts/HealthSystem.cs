@@ -14,9 +14,9 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] TextMeshProUGUI _healtText;
 
     [Header("Health Amount")]
-    [SerializeField] float _currentHealth;
-    [SerializeField] float _maxHealth;
-    [SerializeField] float _minHealth;
+    public float _currentHealth;
+    public float _maxHealth;
+    public float _minHealth;
 
 
     private void Awake()
@@ -34,7 +34,7 @@ public class HealthSystem : MonoBehaviour
         if (_currentHealth <= _minHealth)
         {
             _currentHealth = _minHealth;
-            Debug.Log("Karakter öldü sahne yenilendi");
+
         }
 
         //can denme 
