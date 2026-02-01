@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     public void ReturnToMainMenu()
     {
         //indeks sonradan atilacak.
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Retro");
     }
 
     public void AddPoints(int value)

@@ -13,7 +13,7 @@ public class ShootSystem : MonoBehaviour
     [SerializeField] float _currentAmmo;
     [SerializeField] float _MinAmmo;
     [SerializeField] float _maxAmmo;
-    [SerializeField] bool _shooting;
+    public bool _shooting;
 
     [SerializeField] float _Damage;
 

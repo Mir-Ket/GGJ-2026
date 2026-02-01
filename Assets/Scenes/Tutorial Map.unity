@@ -6001,7 +6001,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &234763897
 Transform:
   m_ObjectHideFlags: 0
@@ -18784,6 +18784,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 896655131}
   m_CullTransparentMesh: 1
+--- !u!114 &898523495 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5523673620900629717, guid: 4b02d4ecd3b3635469d41b86ed4c3262, type: 3}
+  m_PrefabInstance: {fileID: 7378391854619861732}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &910132055
 GameObject:
   m_ObjectHideFlags: 0
@@ -40232,6 +40243,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 995005492376025916, guid: 129ad1fe9e769db46a281573a580703f, type: 3}
+      propertyPath: _ammoText
+      value: 
+      objectReference: {fileID: 898523495}
     - target: {fileID: 1318474066053664301, guid: 129ad1fe9e769db46a281573a580703f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -40252,10 +40267,22 @@ PrefabInstance:
       propertyPath: orientation
       value: 
       objectReference: {fileID: 1639348582}
+    - target: {fileID: 6348564686515528936, guid: 129ad1fe9e769db46a281573a580703f, type: 3}
+      propertyPath: _ammoText
+      value: 
+      objectReference: {fileID: 898523495}
+    - target: {fileID: 6866303060116564336, guid: 129ad1fe9e769db46a281573a580703f, type: 3}
+      propertyPath: _ammoText
+      value: 
+      objectReference: {fileID: 898523495}
     - target: {fileID: 7835742745960192292, guid: 129ad1fe9e769db46a281573a580703f, type: 3}
       propertyPath: grappling
       value: 
       objectReference: {fileID: 1349502882}
+    - target: {fileID: 8654183679260490064, guid: 129ad1fe9e769db46a281573a580703f, type: 3}
+      propertyPath: _ammoText
+      value: 
+      objectReference: {fileID: 898523495}
     - target: {fileID: 8654363246349004577, guid: 129ad1fe9e769db46a281573a580703f, type: 3}
       propertyPath: m_Name
       value: CameraHolder

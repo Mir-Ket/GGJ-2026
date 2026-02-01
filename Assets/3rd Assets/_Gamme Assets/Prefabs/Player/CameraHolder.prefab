@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 83519048623715398}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 0.12981759, z: -0, w: 0.9915379}
+  m_LocalPosition: {x: -1.73, y: 0, z: 0.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -36,7 +36,7 @@ Transform:
   - {fileID: 4942509918990957705}
   - {fileID: 7301251163829844386}
   m_Father: {fileID: 6617113908237765508}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 14.918, z: 0}
 --- !u!120 &6733553500270571287
 LineRenderer:
   serializedVersion: 2
@@ -227,7 +227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4495121279332138108
 Transform:
   m_ObjectHideFlags: 0
@@ -365,7 +365,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -544,7 +544,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 92b3ff7d2ba9a2445a4b7aee3f453873, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -578,7 +578,7 @@ MonoBehaviour:
   _ammoText: {fileID: 0}
   _currentAmmo: 0
   _MinAmmo: 0
-  _maxAmmo: 8
+  _maxAmmo: 10
   _shooting: 0
   _Damage: 20
 --- !u!4 &1803684512157258903 stripped
@@ -608,7 +608,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 800bf082b3be5564fbf877cc35a6137a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.4796742
+      value: 0.9559657
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 800bf082b3be5564fbf877cc35a6137a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -652,7 +652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 800bf082b3be5564fbf877cc35a6137a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -661,6 +661,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 800bf082b3be5564fbf877cc35a6137a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8654183679260490064}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 800bf082b3be5564fbf877cc35a6137a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3834879890710646965}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 800bf082b3be5564fbf877cc35a6137a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4137779881217446162}
   m_SourcePrefab: {fileID: 100100000, guid: 800bf082b3be5564fbf877cc35a6137a, type: 3}
 --- !u!4 &3788600604463131745 stripped
 Transform:
@@ -691,9 +697,43 @@ MonoBehaviour:
   _ammoText: {fileID: 0}
   _currentAmmo: 0
   _MinAmmo: 0
-  _maxAmmo: 8
+  _maxAmmo: 100
   _shooting: 0
   _Damage: 50
+--- !u!95 &3834879890710646965
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4600427576939951835}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4f11a5996eb17264c9aa111610a4775d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4137779881217446162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4600427576939951835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b5ab2994e0140459a69aeff5dd4b94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NinjaMask
 --- !u!1001 &4611140724659250833
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -760,7 +800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e28a6953430d0b348897e4afc3ae085a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
