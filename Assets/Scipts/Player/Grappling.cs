@@ -3,11 +3,13 @@ using UnityEngine.InputSystem;
 public class Grappling : MonoBehaviour
 {
     [Header("References")]
-    private PlayerMovement pm;
+    [SerializeField] private PlayerMovement pm;
     public Transform cam;
     public Transform gunTip;
     public LayerMask whatIsGrappleable;
     public LineRenderer lr;
+    public GameObject hook;
+    SoundManager sm;
 
     [Header("Grappling")]
     public float maxGrappleDistance;
@@ -29,6 +31,7 @@ public class Grappling : MonoBehaviour
     void Start()
     {
         pm = GetComponent<PlayerMovement>();
+        
     }
 
     // Update is called once per frame
@@ -62,6 +65,10 @@ public class Grappling : MonoBehaviour
         grappling = true;
 
         pm.freeze = true;
+        SoundManager.PlaySound(SoundType.HOOK_LAUNCH,0.5f);
+        hook.SetActive(false);
+        
+        
 
         RaycastHit hit;
         if(Physics.Raycast(cam.position,cam.forward,out hit, maxGrappleDistance,whatIsGrappleable))
@@ -82,6 +89,7 @@ public class Grappling : MonoBehaviour
     private void ExecuteGrapple()
     {
         pm.freeze = false;
+        SoundManager.PlaySound(SoundType.HOOK_HIT,0.5f);
 
         Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
         float grapplePointRelativeYPos = grapplePoint.y - lowestPoint.y;
@@ -90,6 +98,7 @@ public class Grappling : MonoBehaviour
         {
             highestPointOnArc = overshootYAxis;
         }
+        
 
         pm.JumpToPosition(grapplePoint,highestPointOnArc);
 
@@ -106,6 +115,7 @@ public class Grappling : MonoBehaviour
         grapplingCdTimer = grapplingCd;
 
         //lr.enabled = false;
+        hook.SetActive(true);
     }
 
     public bool IsGrappling()
