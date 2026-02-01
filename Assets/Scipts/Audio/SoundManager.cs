@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum SoundType
 {
@@ -26,7 +27,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip[] soundList;
     private static SoundManager instance;
     private AudioSource audioSource;
-    private int musicIndex;
+    [SerializeField] private Slider audioSlider;
+
 
     [SerializeField] private AudioSource playerAudio;
 
@@ -50,8 +52,18 @@ public class SoundManager : MonoBehaviour
         //main audio
         audioSource = GetComponent<AudioSource>();
 
-        
-        
+        if (!PlayerPrefs.HasKey("SFX Volume"))
+        {
+            PlayerPrefs.SetFloat("SFX Volume", 1f);
+        }
+        else
+        {
+            LoadPrefs();
+
+        }
+
+
+
     }
 
     // Update is called once per frame
@@ -65,7 +77,27 @@ public class SoundManager : MonoBehaviour
         instance.audioSource.PlayOneShot(instance.soundList[(int)sound], volume);
     }
 
-    
+    public void ChangeVolume()
+    {
+        if (audioSlider != null)
+        {
+            audioSource.volume = audioSlider.value;
+            SavePrefs(audioSlider.value);
+        }
 
-  
+    }
+
+    private void SavePrefs(float value)
+    {
+        PlayerPrefs.SetFloat("SFX Volume", value);
+    }
+
+    private void LoadPrefs()
+    {
+        PlayerPrefs.GetFloat("SFX Volume");
+    }
+
+
+
+
 }
