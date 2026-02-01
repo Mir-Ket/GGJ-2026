@@ -340,8 +340,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c825fedc81ca96145ad1c69c0a0de8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCamera
-  sensX: 300
-  sensY: 300
+  sensX: 10
+  sensY: 10
   orientation: {fileID: 0}
 --- !u!1 &4984757132441153109
 GameObject:
