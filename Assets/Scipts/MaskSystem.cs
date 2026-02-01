@@ -64,10 +64,8 @@ public class MaskSystem : MonoBehaviour
 
                 break;
             case "Speed":
-                Debug.Log("Speed");
                 _grapplingScript.enabled = false;
-                _playerMovement.limitSpeed = false;
-                Debug.Log("Hýzladý");
+                Debug.Log("Speed");
                 break;
                 
         }
