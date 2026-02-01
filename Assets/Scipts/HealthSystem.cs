@@ -38,7 +38,7 @@ public class HealthSystem : MonoBehaviour
         }
 
         //can denme 
-/*        if (Input.GetKeyDown(KeyCode.E))
+        /* if (Input.GetKeyDown(KeyCode.E))
         {
             HealthIncrease(10);
         }

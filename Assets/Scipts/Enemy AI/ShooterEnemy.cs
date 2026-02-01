@@ -1,32 +1,32 @@
 using UnityEngine;
 
-public class SuicideEnemy : MonoBehaviour
+public class ShooterEnemy : MonoBehaviour
 {
     [SerializeField] HealthSystem _playerHealth;
+    [SerializeField] bool _isShooting;
     [SerializeField] float _damage;
-
     private EnemyBase _enemyBase;
-    private bool _isExplod;
+
     private void Start()
     {
         _enemyBase = GetComponent<EnemyBase>();
     }
     private void Update()
     {
-        Suicide();
+        Shoot();
     }
-    private void Suicide()
+    private void Shoot()
     {
-        if (_enemyBase._attacked&& !_isExplod)
+        if (_enemyBase._attacked && !_isShooting)
         {
-            _isExplod = true;
+            _isShooting = true;
             Invoke(nameof(Delayer), 2f);
         }
     }
     private void Delayer()
     {
-        Debug.Log("Patladý");
+        Debug.Log("Ateþ etti");
         _playerHealth.HealthDecrease(_damage);
-        Destroy(gameObject);
+        _isShooting = false;
     }
 }

@@ -7,7 +7,8 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] NavMeshAgent _agent;
     [SerializeField] Transform _playerTransform;
     [SerializeField] LayerMask _groundLayer, _playerLayer;
-
+    [SerializeField] Animator _anim;
+    [SerializeField] Animator _anim2;
     [Header("AI Patrol")]
     [SerializeField] Vector3 _walkPoint;
     [SerializeField] float _walkRange;
@@ -23,6 +24,8 @@ public class EnemyBase : MonoBehaviour
 
     private void Awake()
     {
+        
+        _anim=GetComponent<Animator>();
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         _agent = GetComponent<NavMeshAgent>();
     }
@@ -59,6 +62,8 @@ public class EnemyBase : MonoBehaviour
         if (_walkPointSet)
         {
             _agent.SetDestination(_walkPoint);
+            _anim.SetBool("Run", true);
+            _anim2.SetBool("Run", true);
         }
         Vector3 distanceToWalkPoint = transform.position - _walkPoint;
 

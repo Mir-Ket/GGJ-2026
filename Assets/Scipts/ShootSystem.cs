@@ -15,6 +15,7 @@ public class ShootSystem : MonoBehaviour
     [SerializeField] float _maxAmmo;
     [SerializeField] bool _shooting;
 
+    [SerializeField] float _Damage;
 
     private void Awake()
     {
@@ -44,7 +45,7 @@ public class ShootSystem : MonoBehaviour
                 {
                     if (_shooting==true)
                     {
-                        healthSystem.HealthDecrease(10);
+                        healthSystem.HealthDecrease(_Damage);
                     }
                     
                 }
