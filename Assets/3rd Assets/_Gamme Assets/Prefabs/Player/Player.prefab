@@ -437,8 +437,8 @@ MonoBehaviour:
   wallRunForce: 200
   wallClimbForce: 200
   wallClimbSpeed: 3
-  wallJumpUpForce: 12
-  wallJumpSideForce: 10
+  wallJumpUpForce: 8
+  wallJumpSideForce: 65
   maxWallRunTime: 1.5
   movement: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   upwardRunInput: {fileID: -2333456811496217999, guid: 052faaac586de48259a63d0c4782560b, type: 3}
