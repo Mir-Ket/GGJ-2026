@@ -13,8 +13,15 @@ public class ShootSystem : MonoBehaviour
     [SerializeField] float _currentAmmo;
     [SerializeField] float _MinAmmo;
     [SerializeField] float _maxAmmo;
+
+    [Header("Explode System")]
+    [SerializeField] float _explodRange;
+    [SerializeField] float _explodDamage;
+    [SerializeField] float _rotationSpeed;
+
     public bool _shooting;
     public bool _attacked;
+    public bool _reload;
 
     [SerializeField] float _Damage;
 
@@ -53,7 +60,7 @@ public class ShootSystem : MonoBehaviour
                 Debug.Log("Enemy");
             }
         }
-        else { _attacked = false; }
+        else { _attacked = false; _reload = false; }
     }
     private void ShootControl()
     {
@@ -86,10 +93,18 @@ public class ShootSystem : MonoBehaviour
         if (Input.GetKey(KeyCode.R)&&_currentAmmo<_maxAmmo)
         {
             _currentAmmo = _maxAmmo;
+            _reload=true;
             Debug.Log("Reload Atýldý");
         }
     }
 
+    public void Explod()
+    {
+        if (Physics.CheckSphere(transform.position,_explodRange,_layerMask))
+        {
+            transform.Rotate(Vector3.up*_rotationSpeed*Time.deltaTime);
+        }
+    }
     private void OnDrawGizmos()
        {
         Gizmos.color = Color.green;
