@@ -14,6 +14,7 @@ public class ShootSystem : MonoBehaviour
     [SerializeField] float _MinAmmo;
     [SerializeField] float _maxAmmo;
     public bool _shooting;
+    public bool _attacked;
 
     [SerializeField] float _Damage;
 
@@ -40,17 +41,18 @@ public class ShootSystem : MonoBehaviour
             ShootControl();
             if (Physics.Raycast(_camRaycast, out hit, _raycastDistance, _layerMask))
             {
-                
+                _attacked = true;
                 if (hit.collider.TryGetComponent(out HealthSystem healthSystem))
                 {
-                    if (_shooting==true)
+                    if (_shooting == true)
                     {
                         healthSystem.HealthDecrease(_Damage);
                     }
-                    
+
                 }
                 Debug.Log("Enemy");
             }
+            else { _attacked = false; }
        
         }
 

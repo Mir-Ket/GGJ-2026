@@ -10,14 +10,14 @@ public class MaskSystem : MonoBehaviour
 
     private int lastActiveIndex = -1;
 
-    private Grappling _grapplingScript;
+   // private Grappling _grapplingScript;
     private PlayerMovement _playerMovement;
 
     void Start()
     {
         DeactivateAll();
-        _grapplingScript = Object.FindAnyObjectByType<Grappling>();
-        _grapplingScript.enabled = false;
+        //_grapplingScript = Object.FindAnyObjectByType<Grappling>();
+       // _grapplingScript.enabled = false;
 
     }
 
@@ -46,25 +46,25 @@ public class MaskSystem : MonoBehaviour
         {
             case "Grapple Gun":
                 Debug.Log("GrableGun");
-                _grapplingScript.enabled = true;
+               // _grapplingScript.enabled = true;
 
                 break;
             case "Desert Eagle":
                 Debug.Log("Desert Eagle");
-                _grapplingScript.enabled = false;
+               // _grapplingScript.enabled = false;
                 break;
             case "Katana":
                 Debug.Log("Katana");
-                _grapplingScript.enabled = false;
+               // _grapplingScript.enabled = false;
 
                 break;
             case "Mic":
                 Debug.Log("Mic");
-                _grapplingScript.enabled = false;
+              //  _grapplingScript.enabled = false;
 
                 break;
             case "Speed":
-                _grapplingScript.enabled = false;
+               // _grapplingScript.enabled = false;
                 Debug.Log("Speed");
                 break;
                 

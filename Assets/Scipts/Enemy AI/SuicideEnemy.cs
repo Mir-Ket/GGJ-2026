@@ -9,7 +9,8 @@ public class SuicideEnemy : MonoBehaviour
     private HealthSystem _enemyHealth;
     private EnemyBase _enemyBase;
     private Animator _anim;
-    private bool _isExplod;
+    private bool _hasExploded;
+
     private void Start()
     {
         _Vfx.SetActive(false);
@@ -17,38 +18,35 @@ public class SuicideEnemy : MonoBehaviour
         _enemyBase = GetComponent<EnemyBase>();
         _enemyHealth = GetComponent<HealthSystem>();
     }
+
     private void Update()
     {
-        Suicide();
-    }
-    private void Suicide()
-    {
-        if (_enemyBase._walkPointSet==true)
-        {
-            _anim.SetBool("Run", true);
-        }
-        if (_enemyBase._attacked&& !_isExplod)
-        {
-            _isExplod = true;
-            Invoke(nameof(Vfx), 1.94f);
+        _anim.SetBool("Run", _enemyBase._agent.velocity.magnitude > 0.1f);
 
+        if (_enemyBase._attacked && !_hasExploded)
+        {
+            StartExplosionSequence();
         }
 
-        if (_enemyHealth._currentHealth<=_enemyHealth._minHealth)
-        {
+        if (_enemyHealth._currentHealth <= _enemyHealth._minHealth)
             Destroy(gameObject);
-        }
-    }
-    private void Vfx()
-    {
-        Invoke(nameof(Delayer), 0.06f);
-        _Vfx.SetActive(true);
-    }
-    private void Delayer()
-    {
-        Debug.Log("Patladý");
-        _playerHealth.HealthDecrease(_damage);
-        Destroy(gameObject);
     }
 
+    private void StartExplosionSequence()
+    {
+        _hasExploded = true;
+        Invoke(nameof(Explode), 0.5f); 
+    }
+
+    private void Explode()
+    {
+        Debug.Log("Düþman Patladý!");
+        _Vfx.transform.parent = null; 
+        _Vfx.SetActive(true);
+        
+        _playerHealth.HealthDecrease(_damage);
+        
+        Destroy(gameObject);
+        Destroy(_Vfx, 2f); 
+    }
 }

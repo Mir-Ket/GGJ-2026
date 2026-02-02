@@ -24,7 +24,7 @@ public class NinjaMask : MonoBehaviour
         }
         else 
         {
-            _anim.SetBool("Attack", true);
+            _anim.SetBool("Attack", false);
 
         }
 

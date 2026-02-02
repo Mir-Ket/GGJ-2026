@@ -3,14 +3,13 @@ using UnityEngine;
 public class ShooterEnemy : MonoBehaviour
 {
     [SerializeField] HealthSystem _playerHealth;
-    [SerializeField] bool _isShooting;
     [SerializeField] float _damage;
     [SerializeField] GameObject _Vfx;
 
     private Animator _anim;
     private HealthSystem _enemyHealth;
-
     private EnemyBase _enemyBase;
+    private bool _canShoot = true;
 
     private void Start()
     {
@@ -18,35 +17,43 @@ public class ShooterEnemy : MonoBehaviour
         _anim = GetComponent<Animator>();
         _enemyBase = GetComponent<EnemyBase>();
         _enemyHealth = GetComponent<HealthSystem>();
-
     }
+
     private void Update()
     {
-        Shoot();
-    }
-    private void Shoot()
-    {
-        if (_enemyBase._walkPointSet==true)
-        {
-            _anim.SetBool("Run", true);
-        }
-
-         if (_enemyBase._attacked && !_isShooting)
-            {
-            _isShooting = true;
-            _Vfx?.SetActive(false);
-            InvokeRepeating(nameof(Delayer), 2f,2f);
-        }
+        HandleAnimations();
+        HandleCombat();
+        
         if (_enemyHealth._currentHealth <= _enemyHealth._minHealth)
-        {
             Destroy(gameObject);
+    }
+
+    private void HandleAnimations()
+    {
+        bool isMoving = _enemyBase._agent.velocity.magnitude > 0.1f;
+        _anim.SetBool("Run", isMoving);
+    }
+
+    private void HandleCombat()
+    {
+        if (_enemyBase._attacked && _canShoot)
+        {
+            ExecuteShot();
         }
     }
-    private void Delayer()
+
+    private void ExecuteShot()
     {
+        _canShoot = false;
         Debug.Log("Ateþ etti");
+        
         _playerHealth.HealthDecrease(_damage);
-        _Vfx?.SetActive(true);
-        _isShooting = false;
+        _Vfx.SetActive(true);
+        
+        Invoke(nameof(ResetVfx), 0.5f);
+        Invoke(nameof(ResetShoot), 1f);
     }
+
+    private void ResetVfx() => _Vfx.SetActive(false);
+    private void ResetShoot() => _canShoot = true;
 }
