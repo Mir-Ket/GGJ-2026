@@ -32,6 +32,7 @@ public class ShooterEnemy : MonoBehaviour
     {
         bool isMoving = _enemyBase._agent.velocity.magnitude > 0.1f;
         _anim.SetBool("Run", isMoving);
+
     }
 
     private void HandleCombat()
@@ -44,6 +45,7 @@ public class ShooterEnemy : MonoBehaviour
 
     private void ExecuteShot()
     {
+        if (_canShoot && _enemyBase._agent.velocity.magnitude <= 0.1f) _enemyBase._agent.SetDestination(transform.position);
         _canShoot = false;
         Debug.Log("Ateþ etti");
         

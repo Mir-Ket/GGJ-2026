@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class NinjaMask : MonoBehaviour
 {
+    [SerializeField] ParticleSystem _slashvfx;
     private ShootSystem _shootSystem;
     private Animator _anim;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,9 +19,10 @@ public class NinjaMask : MonoBehaviour
     }
     private void Katana()
     {
-        if (_shootSystem._shooting == true)
+        if (_shootSystem._attacked == true)
         {
             _anim.SetBool("Attack", true);
+            _slashvfx.Play();
         }
         else 
         {

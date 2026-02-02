@@ -38,10 +38,10 @@ public class ShootSystem : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            _attacked = true;
             ShootControl();
             if (Physics.Raycast(_camRaycast, out hit, _raycastDistance, _layerMask))
             {
-                _attacked = true;
                 if (hit.collider.TryGetComponent(out HealthSystem healthSystem))
                 {
                     if (_shooting == true)
@@ -52,10 +52,8 @@ public class ShootSystem : MonoBehaviour
                 }
                 Debug.Log("Enemy");
             }
-            else { _attacked = false; }
-       
         }
-
+        else { _attacked = false; }
     }
     private void ShootControl()
     {
