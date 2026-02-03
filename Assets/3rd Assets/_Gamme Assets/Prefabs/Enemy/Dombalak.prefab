@@ -700,15 +700,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: fbea7ef0567d7604498f939e81c32daa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -34.31
+      value: -7.554243
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fbea7ef0567d7604498f939e81c32daa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.71389
+      value: 0.074401855
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fbea7ef0567d7604498f939e81c32daa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -163.87247
+      value: -36.549835
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fbea7ef0567d7604498f939e81c32daa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -716,15 +716,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fbea7ef0567d7604498f939e81c32daa, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fbea7ef0567d7604498f939e81c32daa, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fbea7ef0567d7604498f939e81c32daa, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fbea7ef0567d7604498f939e81c32daa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -800,8 +800,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 15
+  m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -833,12 +833,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _walkPoint: {x: 0, y: 0, z: 0}
-  _walkRange: 20
+  _walkRange: 30
   _walkPointSet: 0
   _attackDelay: 2
   _attacked: 0
-  _sightRange: 15
-  _attackRange: 5
+  _sightRange: 25
+  _attackRange: 3
   _playerInSightRange: 0
   _playerInAttackRange: 0
 --- !u!114 &6316934567882933016
@@ -854,7 +854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SuicideEnemy
   _playerHealth: {fileID: 0}
-  _damage: 50
+  _damage: 30
   _Vfx: {fileID: 1488546169163874754}
 --- !u!114 &194151140354646812
 MonoBehaviour:

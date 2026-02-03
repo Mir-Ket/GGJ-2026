@@ -13,7 +13,7 @@ public class MaskTrigger : MonoBehaviour
             {
                 manager.ActivateRandomMask();
             }
-            // Destroy(gameObject);
+             Destroy(gameObject);
         }
     }
 }

@@ -1440,10 +1440,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   orientation: {fileID: 2103291833990040480}
-  moveSpeed: 7
-  walkSpeed: 7
-  sprintSpeed: 10
-  slideSpeed: 30
+  moveSpeed: 12
+  walkSpeed: 15
+  sprintSpeed: 30
+  slideSpeed: 60
   wallRunSpeed: 8.5
   speedIncreaseMultiplier: 1.5
   slopeIncreaseMultiplier: 2.5

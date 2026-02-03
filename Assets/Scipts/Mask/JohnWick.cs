@@ -24,6 +24,11 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         if (_shootSystem._attacked == true) {_anim.SetBool("Shoot", true); _gunVfx.Play(); }
 
-        else { _anim.SetBool("Shoot", false);}
+        else { _anim.SetBool("Shoot", false);  }
+
+        if (_shootSystem._shooting==false)
+        {
+            _gunVfx.Stop();
+        }
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerDead : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class PlayerDead : MonoBehaviour
     {
         if (_healthSystem._currentHealth<=_healthSystem._minHealth)
         {
-         Debug.Log("Dead");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
