@@ -10,14 +10,11 @@ public class ShootSystem : MonoBehaviour
 
     [Header("Shooting System")]
     [SerializeField] TextMeshProUGUI _ammoText;
-    [SerializeField] float _currentAmmo;
-    [SerializeField] float _MinAmmo;
+    public float _currentAmmo;
+    public float _MinAmmo;
     [SerializeField] float _maxAmmo;
 
-    [Header("Explode System")]
-    [SerializeField] float _explodRange;
-    [SerializeField] float _explodDamage;
-    [SerializeField] float _rotationSpeed;
+
 
     public bool _shooting;
     public bool _attacked;
@@ -98,13 +95,7 @@ public class ShootSystem : MonoBehaviour
         }
     }
 
-    public void Explod()
-    {
-        if (Physics.CheckSphere(transform.position,_explodRange,_layerMask))
-        {
-            transform.Rotate(Vector3.up*_rotationSpeed*Time.deltaTime);
-        }
-    }
+
     private void OnDrawGizmos()
        {
         Gizmos.color = Color.green;
