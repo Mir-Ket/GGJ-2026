@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Haven.unity
     guid: 55460cfea2cfd85498cbc67b950fb140
   - enabled: 1
+    path: Assets/Scenes/Hell.unity
+    guid: 644e072c6c0909f48b9abd098b760d68
+  - enabled: 1
     path: Assets/Scenes/Retro.unity
     guid: 76026858c98c3cc42921d721c70951ed
   - enabled: 1

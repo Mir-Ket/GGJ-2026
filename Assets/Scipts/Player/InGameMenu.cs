@@ -43,7 +43,11 @@ public class InGameMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+    public void RestartMenu()
+    {
+        gameManager.GetComponent<GameManager>().RestartLevel();
 
+    }
     public void ExitGame()
     {
         Application.Quit();
