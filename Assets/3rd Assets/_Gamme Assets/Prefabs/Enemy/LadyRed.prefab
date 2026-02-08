@@ -552,27 +552,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a9c6009d0a5c6294bbb9dc7bae4bfae6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.58458
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a9c6009d0a5c6294bbb9dc7bae4bfae6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.58458
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a9c6009d0a5c6294bbb9dc7bae4bfae6, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.58458
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a9c6009d0a5c6294bbb9dc7bae4bfae6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.71155
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a9c6009d0a5c6294bbb9dc7bae4bfae6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.07440376
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a9c6009d0a5c6294bbb9dc7bae4bfae6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -62.705017
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a9c6009d0a5c6294bbb9dc7bae4bfae6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -601,6 +601,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a9c6009d0a5c6294bbb9dc7bae4bfae6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9c6009d0a5c6294bbb9dc7bae4bfae6, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8191740002585371210, guid: a9c6009d0a5c6294bbb9dc7bae4bfae6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1108,12 +1112,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _walkPoint: {x: 0, y: 0, z: 0}
-  _walkRange: 20
+  _walkRange: 40
   _walkPointSet: 0
   _attackDelay: 2
   _attacked: 0
-  _sightRange: 18
-  _attackRange: 5
+  _sightRange: 35
+  _attackRange: 15
   _playerInSightRange: 0
   _playerInAttackRange: 0
 --- !u!114 &1174646132954943604
